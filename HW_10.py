@@ -7,15 +7,34 @@
 # data = pd.DataFrame({'whoAmI':lst})
 # data.head()
 
+# import pandas as pd
+# import random
+
+# lst = ['robot'] * 10
+# lst += ['human'] * 10
+# random.shuffle(lst)
+
+# data = pd.DataFrame({'whoAmI': lst})
+
+# one_hot_encoded = pd.get_dummies(data, columns=['whoAmI'])
+
+# print(one_hot_encoded.head())
+
+
 import pandas as pd
 import random
-
 lst = ['robot'] * 10
 lst += ['human'] * 10
 random.shuffle(lst)
+print(lst)
+print()
+data = pd.DataFrame({'whoAmI':lst})
+data.loc[data['whoAmI'] == 'robot', 'r'] = '1'
+data.loc[data['whoAmI'] != 'robot', 'r'] = '0'
+data.loc[data['whoAmI'] == 'human', 'h'] = '1'
+data.loc[data['whoAmI'] != 'human', 'h'] = '0'
 
-data = pd.DataFrame({'whoAmI': lst})
+data.head(n=11)
 
-one_hot_encoded = pd.get_dummies(data, columns=['whoAmI'])
 
-print(one_hot_encoded.head())
+
